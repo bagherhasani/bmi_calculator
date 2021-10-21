@@ -1,4 +1,4 @@
-package com.adpth.bmicalculator;
+package com.bagher.bmicalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 

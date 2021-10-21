@@ -37,6 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -104,9 +105,27 @@
                 android:textColor="@android:color/white"
                 android:textSize="20sp" />
 
+            <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView2"
+                android:layout_marginTop="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                ads:adUnitId="ca-app-pub-5113000083669228/5468556398">
+            </com.google.android.gms.ads.AdView>
+
+
         </LinearLayout>
 
+
     </androidx.cardview.widget.CardView>
+
+
 
     <Button
         android:id="@+id/recalculate"

@@ -1,4 +1,4 @@
-package com.adpth.bmicalculator;
+package com.bagher.bmicalculator;
 
 import android.content.Context;
 

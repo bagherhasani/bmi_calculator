@@ -1,27 +1,26 @@
-package com.adpth.bmicalculator;
+package com.bagher.bmicalculator;
 
-public class Condition {
+public class Category {
 
     public String getCategory (float result) {
         String category;
         if (result < 15) {
-            category = "Severe Thinness";
+            category = "very severely underweight";
         } else if (result >=15 && result <= 16) {
-            category = "Moderate Thinness";
+            category = "severely underweight";
         } else if (result >16 && result <= 18.5) {
-            category = "Mild Thinness";
+            category = "underweight";
         } else if (result >18.5 && result <= 25) {
-            category = "Normal";
+            category = "normal (healthy weight)";
         } else if (result >25 && result <= 30) {
-            category = "Overweight";
+            category = "overweight";
         } else if (result >30 && result <= 35) {
-            category = "Obese Class I";
+            category = "moderately obese";
         } else if (result >35 && result <= 40) {
-            category = "Obese Class II";
+            category = "severely obese";
         } else {
-            category ="Obese Class III";
+            category ="very severely obese";
         }
         return category;
     }
-
 }

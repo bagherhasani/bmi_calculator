@@ -1,4 +1,4 @@
-package com.adpth.bmicalculator;
+package com.bagher.bmicalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -12,6 +12,16 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -21,13 +31,19 @@ public class MainActivity extends AppCompatActivity {
     int count_weight = 50,count_age = 19;
     RelativeLayout weight_plus, weight_minus, age_plus, age_minus;
     boolean male_clk = true, female_clk = true, check1 = true, check2 = true;
+    AdView adView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Initialize();
+
         height_txt = findViewById(R.id.height_txt);
+        adView=findViewById(R.id.adView);
+
 
         final TextView female_text = findViewById(R.id.female);
         final TextView male_text = findViewById(R.id.male);
@@ -40,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
         weight_minus = findViewById(R.id.weight_minus);
         weight_plus = findViewById(R.id.weight_plus);
+
+        Load1();
 
         card_male.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,4 +196,36 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("age",age.getText().toString());
         startActivity(intent);
     }
+
+    private void Initialize() {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+    }
+
+    void Load1(){
+
+
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.SMART_BANNER);
+        adView.setAdUnitId("ca-app-pub-5113000083669228/6317414268");
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+        adView.setAdListener(new AdListener(){
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+
+                Toast.makeText(MainActivity.this, loadAdError.getMessage(), Toast.LENGTH_SHORT).show();
+//                super.onAdFailedToLoad(loadAdError);
+            }
+        });
+    }
+
+
+
 }
